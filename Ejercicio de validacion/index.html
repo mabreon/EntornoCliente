@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="es_ES">
+  <meta charset="utf-8">
+  <title>Ejemplo DOM</title>
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+  <script type="text/javascript" src="validacion.js"></script>
+</head>
+<body>
+  <div class="cuadradoEjercicios">
+    <h2>Formulario</h2>
+
+<form id="Formulario">
+  <div>
+
+    <label for="nombre">Nombre</label>
+    <input id="nombre"/>
+    <div id="erroresNombre"></div>
+
+  </div>
+   <br>
+
+  <div>
+
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos"/>
+    <div id="erroresApellidos"></div>
+
+  </div>
+  <br>
+
+   <div>
+
+    <label for="edad">Edad</label>
+    <input id="edad"/>
+    <div id="erroresEdad"></div>
+
+  </div>
+  <br>
+  <div>
+  <label for="profesion">Profesión</label>
+  <select id = "profesiones" name="profesion">
+      <option value="ninguna">NINGUNA</option>
+      <option value="profesor">PROFESOR</option>
+      <option value="limpiador">LIMPIADOR</option>
+      <option value="administrador">ADMINISTRADOR</option>
+      <option value="recepcionista">RECEPCIONISTA</option>
+  </select>
+  <div id="erroresProfesion">
+    </div>
+  <br>
+
+  <div> 
+   <label for="aceptar">¿Aceptar Política de Cookies?</label>
+   <input  id="aceptar" type="checkbox">
+  
+  <div id="erroresAceptar">
+  </div>
+  
+
+
+  <input id="enviar" type="submit" name="Enviar">
+</form> 
+
+
+<div id="result"></div>
+</div>
+
+</div>
+
+</body>
+</html>
