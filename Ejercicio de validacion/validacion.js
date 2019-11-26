@@ -19,7 +19,7 @@ document.addEventListener("DOMContenetLoaded",function(){
 			esCorrecto = false;
 			inputNombre.classList.add("inputErroneo");
 			let divError = document.createElement("div");
-			divError.innerHTML = "Deben usarse solo letras y espacios";
+			divError.innerHTML = "MMD DICE: DEBEN USARSE SOLO LETRAS Y ESPACIOS";
 			listaErrores.appendChild(divError);
 		}
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputNombre.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBEN TENER COMO MINIMO 3 LETRAS";
+        divError.innerHTML = "MMD DICE: DEBEN TENER COMO MINIMO 3 LETRAS";
         listaErrores.appendChild(divError);
     }
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputApellidos.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBEN USARSE SOLO LETRAS Y ESPACIOS";
+        divError.innerHTML = "MMD DICE: DEBEN USARSE SOLO LETRAS Y ESPACIOS";
         listaErrores.appendChild(divError);
     }
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputApellidos.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "EL NOMBRE Y EL APELLIDO NO PUEDEN SER IGUALES";
+        divError.innerHTML = "MMD DICE: EL NOMBRE Y EL APELLIDO NO PUEDEN SER IGUALES";
         listaErrores.appendChild(divError);
     }
 
@@ -74,7 +74,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputApellidos.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBE USARSE COMO MINIMO 3 LETRAS";
+        divError.innerHTML = "MMD DICE: DEBE USARSE COMO MINIMO 3 LETRAS";
         listaErrores.appendChild(divError);
     }
 
@@ -106,7 +106,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputEdad.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "SOLO DEBEN USARSE NÚMEROS";
+        divError.innerHTML = "MMD DICE: SOLO DEBEN USARSE NÚMEROS";
         listaErrores.appendChild(divError);
     	}
 
@@ -115,7 +115,7 @@ document.addEventListener("DOMContenetLoaded",function(){
         esCorrecto = false;
         inputEdad.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBE TENER MAS DE 18 AÑOS";
+        divError.innerHTML = "MMD DICE:DEBE TENER MAS DE 18 AÑOS";
         listaErrores.appendChild(divError);
     	}
 
@@ -127,6 +127,48 @@ document.addEventListener("DOMContenetLoaded",function(){
     	}
     	return esCorrecto;
 		}
+//email
+document.addEventListener("DOMContenetLoaded",function(){
+    let input = document.getElementById("email");
+    input.addEventListener("keyup",validarEmail);
+
+})
+
+    function validarEmail() {
+        let expresion = /^([a-zA-z0-9._])+([@])+mmd\.+(com?)+([^.])+$/;
+        let inputEmail = document.getElementById("email");
+        let valor = inputEmail.value.trim();
+        let esCorrecto = true;
+        let listaErrores = document.getElementById("erroresEmail");
+        listaErrores.innerHTML = " ";
+        inputEmail.classList.remove("inputErroneo");
+        inputEmail.classList.remove("inputCorecto");
+
+        if (!expresion.test(valor)) {
+            esCorrecto = false;
+            inputEmail.classList.add("inputErroneo");
+            let divError = document.createElement("div");
+            divError.innerHTML = "MMD DICE:DEBE ACABAR EN MMD.COM";
+            listaErrores.appendChild(divError);
+        }
+//no se como hacer par que no contenga maximo,madrona, duran de modo que e puesto que si se crean emails con estos nombre de error
+        if (valor==="maximo@mmd.com"||valor==="madrona@mmd.com"||valor==="duran@mmd.com"
+            ||valor==="maximomadronaduran@mmd.com") {
+            esCorrecto = false;
+            inputEmail.classList.add("inputErroneo");
+            let divError = document.createElement("div");
+            divError.innerHTML = "MMD DICE:NO PUEDE CONTENER LAS PALABRAS(MAXIMO,MADRONA,DURAN)";
+            listaErrores.appendChild(divError);
+        }
+
+
+    if (esCorrecto) {
+        inputEmail.classList.add("inputCorrecto");
+    }else{
+        inputEmail.classList.add("inputErroneo");
+    }
+    return esCorrecto;
+}        
 
 
 document.addEventListener("DOMContenetLoaded",function(){
@@ -147,7 +189,7 @@ function validarProfesion(){
         esCorrecto = false;
         inputProfesion.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBES DE ELEGIR ALGUNA PROFESION";
+        divError.innerHTML = "MMD DICE: DEBES DE ELEGIR ALGUNA PROFESION";
         listaErrores.appendChild(divError);
     }
 
@@ -180,7 +222,7 @@ function validarAceptar(){
         esCorrecto = false;
         inputAceptar.classList.add("inputErroneo");
         let divError = document.createElement("div");
-        divError.innerHTML = "DEBES ACEPTAR LAS COOKIES";
+        divError.innerHTML = "MMD DICE: DEBES ACEPTAR LAS COOKIES";
         listaErrores.appendChild(divError);
     	}
 
@@ -203,17 +245,18 @@ function añadirUsuario(event) {
     let valorNombre = validarNombre();
     let valorApellidos = validarApellidos();
     let valorEdad = validarEdad();
+    let valorEmail = validarEmail();
     let valorProfesion = validarProfesion();
     let valorAceptar = validarAceptar();
 
 
     if ((valorNombre === true)&&(valorApellidos === true)&&(valorEdad === true)
-        &&(valorProfesion === true)&&(valorAceptar === true)) {
+        &&(valorEmail === true)&&(valorProfesion === true)&&(valorAceptar === true)) {
         validarFormulario = true;
         alert("Usuario creado correctamente");
 
     }else{
-        alert("No se ha podido crear el usuario correctamente");
+        alert("MMD DICE: No se ha podido crear el usuario correctamente");
     }
     if(validarFormulario === true){
 
@@ -221,9 +264,11 @@ function añadirUsuario(event) {
         let nombre = document.getElementById("nombre").value.trim();
         let apellidos = document.getElementById("apellidos").value;
         let edad = document.getElementById("edad").value.trim();
+        let email = document.getElementById("email").value;
         let profesion = document.getElementById("profesiones").value;
         usuarios.nombre = nombre;
         usuarios.apellidos = apellidos;
+        usuarios.email = email;
         usuarios.profesion = profesion;
         usuarios.edad = edad;
 
@@ -234,7 +279,7 @@ function añadirUsuario(event) {
         for (let usuarios of listadoUsuarios) {
             let liusuario = document.createElement("li");
             liusuario.innerHTML = "Nombre: "+usuarios.nombre+"; Apellidos: "
-            +usuarios.apellidos+"; Edad: "+usuarios.edad+"; Profesion: "+usuarios.profesion;
+            +usuarios.apellidos+"; Email: "+usuarios.email+"; Edad: "+usuarios.edad+"; Profesion: "+usuarios.profesion;
             ulUsuarios.appendChild(liusuario);
         }
         let h2 = document.createElement("h2");
