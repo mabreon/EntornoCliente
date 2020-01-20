@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ejercicio 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="estilo.css">
+        <script src="funcionesAjax.js" defer></script>
+    </head>
+    <body>
+        <div id="spinner" class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+        <h1>Datos JSON</h1>
+        <div>
+            <form id="formularioJSON" action="">
+                <label for="nombre">Nombre</label>
+                <input type="text" value="" name="nombre" id="nombre" />
+                <p></p>
+
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo">
+                    <option value="silla">Silla</option>
+                    <option value="sofa">Sofa</option>
+                    <option value="mesa">Mesa</option>
+                </select>
+                <p></p>
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" id="descripcion" cols="15" rows="5"></textarea>
+                <p></p>
+
+                <p></p>
+                <label for="tamanio">Tamaño</label>
+                <input type="checkbox" name="tamanio" id="tamanio">Grande
+                <input type="checkbox" name="tamanio" id="tamanio">Pequeño
+                <p></p>
+
+                
+                <button type="submit" id="botonBusqueda">Buscar</button>
+            </form>
+        </div>
+        <hr>
+        <h1>Resultado:</h1>
+        <p></p>
+        <div id="resultado">
+
+        </div>
+        <hr>
+    </body>
+</html>
