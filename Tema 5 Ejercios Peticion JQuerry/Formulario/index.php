@@ -70,7 +70,7 @@
             
 
                 <label class="form-check-label"> Terminos y condiciones </label>
-                <input  type="checkbox" id="terminos"  onchange="validarTerminos()">
+                <input  type="checkbox" id="terminos" value="1"  onchange="validarTerminos()">
                 <div class="error bg-danger"></div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>

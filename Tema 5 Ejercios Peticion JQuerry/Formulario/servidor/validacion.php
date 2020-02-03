@@ -43,8 +43,8 @@ function validarDescripcion($descripcion){
 //Problema con la validacion de terminos se activa cuando esta activado en lugar de vacio probado con off, on , value 1 y 0.
 function validarTerminos($terminos){
     $errores = array();
-    if($terminos !== "off") {
-    $errores[] = "Acepte los terminos y condiciones";
+    if($terminos !== "1") {
+        $errores[] = "Acepte los terminos y condiciones";
     }
     return $errores;
 }

@@ -109,8 +109,11 @@ function validarDescripcion() {
 }
 
 function validarTerminos() {
-    let inputterminos = $("#terminos:checked").val();
-    let Input = $("#terminos")
+    let Input = $("#terminos");
+    let inputterminos = 0;
+    if(Input.is(":checked")){
+        inputterminos = Input.val();
+    }
     $.ajax({
         url: "./servidor/validadorAjax.php",
         data: { terminos: inputterminos },
@@ -144,10 +147,15 @@ function validacionFormularioAjax() {
     let inputtipo = $("#tipo");
     let inputtamanio = $("#tamanio");
     let inputdescripcion = $("#descripcion");
-    let inputterminos = $("#terminos:checked");
+    let inputterminos = 0;
+    //EL CHECKBOX TIENE QUE TENER UN VALOR INICIAL YA QUE SI NO ES COMO SI ESTE NO EXISTIERA 
+    let Input = $("#terminos");
+    if(Input.is(":checked")){
+        inputterminos = Input.val();
+    }
     $.ajax({
         url: "./servidor/validadorAjax.php",
-        data: { nombre: inputnombre.val(), tipo: inputtipo.val(), tamanio: inputtamanio.val(), descripcion: inputdescripcion.val(), terminos: inputterminos.val() },
+        data: { nombre: inputnombre.val(), tipo: inputtipo.val(), tamanio: inputtamanio.val(), descripcion: inputdescripcion.val(), terminos: inputterminos },
         method: "POST",
         dataType: "JSON",
         beforeSend: function () { $("#spinner").css("display", "block"); },
@@ -158,14 +166,14 @@ function validacionFormularioAjax() {
             gestionarErrores(inputtamanio, text.tamanio);
             gestionarErrores(inputdescripcion, text.descripcion);
 
-            gestionarErrores(inputterminos, text.terminos);
+            gestionarErrores(Input, text.terminos);
 
             if (gestionarErrores(inputnombre, text.nombre) === false && gestionarErrores(inputtipo, text.tipo) === false &&
                 gestionarErrores(inputtamanio, text.tamanio) === false && gestionarErrores(inputdescripcion, text.descripcion) === false &&
-                gestionarErrores(inputterminos, text.terminos) === false) {
+                gestionarErrores(Input, text.terminos) === false) {
                 $.ajax({
                     url: "./servidor/insertarDatos.php",
-                    data: { nombre: inputnombre.val(), tipo: inputtipo.val(), tamanio: inputtamanio.val(), descripcion: inputdescripcion.val(), terminos: inputterminos.val() },
+                    data: { nombre: inputnombre.val(), tipo: inputtipo.val(), tamanio: inputtamanio.val(), descripcion: inputdescripcion.val(), terminos: inputterminos },
                     method: "POST",
                     dataType: "JSON",
                 });
